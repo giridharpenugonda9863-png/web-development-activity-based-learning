@@ -1,1 +1,592 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineScope - Movie Reviews</title>
 
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #10131b;
+    color: #f5f5f5;
+}
+header {
+    background: #191d29;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 2px solid #f5b51b;
+}
+
+.logo {
+    font-size: 27px;
+    color: #f5b51b;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f5b51b;
+}
+
+.search {
+    padding: 10px 14px;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background: #252a38;
+    color: white;
+    width: 190px;
+}
+.hero {
+    min-height: 390px;
+    padding: 65px 8%;
+    display: flex;
+    align-items: center;
+    background:
+    linear-gradient(90deg, #090b12ed, #090b1255),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=85");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #f5b51b;
+}
+
+.hero p {
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #f5b51b;
+    color: #10131b;
+    padding: 12px 22px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: white;
+}
+section {
+    padding: 40px 6%;
+}
+
+.section-title {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #a9afbd;
+    margin-bottom: 25px;
+}
+
+.genres {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.genres a {
+    text-decoration: none;
+    color: white;
+    background: #252a38;
+    border: 1px solid #414657;
+    padding: 10px 18px;
+    border-radius: 22px;
+}
+
+.genres a:hover {
+    background: #f5b51b;
+    color: #10131b;
+}
+
+/* Movie Grid */
+.movies {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.movie-card {
+    background: #1b202d;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #2d3343;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 25px #0008;
+}
+
+.poster {
+    position: relative;
+}
+
+.poster img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    display: block;
+}
+
+.genre-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #f5b51b;
+    color: #10131b;
+    padding: 5px 9px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.movie-info {
+    padding: 16px;
+}
+
+.movie-info h3 {
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+
+.release {
+    color: #a9afbd;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.rating {
+    color: #f5b51b;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.rating span {
+    color: white;
+    font-weight: bold;
+}
+
+.synopsis {
+    font-size: 13px;
+    color: #c3c7d1;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.cast {
+    color: #a9afbd;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.review {
+    background: #252a38;
+    padding: 12px;
+    border-left: 3px solid #f5b51b;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #e0e3e9;
+    line-height: 1.6;
+}
+
+.review strong {
+    color: #f5b51b;
+}
+
+.review-score {
+    display: block;
+    color: #f5b51b;
+    font-weight: bold;
+    margin-top: 6px;
+}
+.featured {
+    background: linear-gradient(120deg, #242b3d, #171b27);
+    border-top: 1px solid #343b4e;
+    border-bottom: 1px solid #343b4e;
+}
+
+.featured-box {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    padding: 25px;
+}
+
+.featured-box h2 {
+    color: #f5b51b;
+    margin-bottom: 15px;
+}
+
+.featured-box p {
+    line-height: 1.9;
+    color: #d4d7df;
+}
+footer {
+    background: #191d29;
+    padding: 30px 15px;
+    text-align: center;
+    color: #a9afbd;
+}
+
+footer h2 {
+    color: #f5b51b;
+    margin-bottom: 10px;
+}
+
+footer a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    margin: 12px 8px;
+}
+
+footer a:hover {
+    color: #f5b51b;
+}
+
+ .hero h1 {
+        font-size: 32px;
+    }
+</style>
+</head>
+
+<body>
+<header>
+    <div class="logo">🎬 CineScope</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#genres">Genres</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <input class="search" type="search"
+           placeholder="Search movies...">
+</header>
+<div class="hero" id="home">
+    <div class="hero-content">
+        <h1>Discover. Review.<br><span>Love Cinema.</span></h1>
+        <p>
+            Explore amazing movies, discover new genres,
+            read reviews and check ratings before choosing
+            your next movie to watch.
+        </p>
+        <a href="#movies" class="btn">Explore Movies →</a>
+    </div>
+</div>
+<section id="genres">
+    <h2 class="section-title">Explore Genres</h2>
+    <p class="subtitle">Find movies that match your mood.</p>
+
+    <div class="genres">
+        <a href="#action">Action</a>
+        <a href="#drama">Drama</a>
+        <a href="#scifi">Sci-Fi</a>
+        <a href="#thriller">Thriller</a>
+        <a href="#animation">Animation</a>
+        <a href="#adventure">Adventure</a>
+    </div>
+</section>
+<section id="movies">
+    <h2 class="section-title">⭐ Top Movie Picks</h2>
+    <p class="subtitle">
+        Movie details, ratings, cast information and critic reviews.
+    </p>
+
+    <div class="movies">
+        <div class="movie-card" id="action">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
+                     alt="Oppenheimer movie poster">
+                <span class="genre-tag">Drama</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>Oppenheimer</h3>
+                <p class="release">Release: 2023</p>
+                <p class="rating">★★★★★ <span>8.3/10</span></p>
+                <p class="synopsis">
+                    A biographical drama following scientist
+                    J. Robert Oppenheimer and the development
+                    of the atomic bomb.
+                </p>
+                <p class="cast">
+                    <strong>Cast:</strong> Cillian Murphy,
+                    Emily Blunt, Robert Downey Jr.
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    A powerful historical drama with
+                    compelling performances.
+                    <span class="review-score">Critic score: 93/100</span>
+                </div>
+            </div>
+        </div>
+        <div class="movie-card" id="scifi">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
+                     alt="Dune Part Two movie poster">
+                <span class="genre-tag">Sci-Fi</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>Dune: Part Two</h3>
+                <p class="release">Release: 2024</p>
+                <p class="rating">★★★★★ <span>8.5/10</span></p>
+                <p class="synopsis">
+                    Paul Atreides joins the Fremen on a journey
+                    of destiny, survival and revenge on Arrakis.
+                </p>
+                <p class="cast">
+                    <strong>Cast:</strong> Timothée Chalamet,
+                    Zendaya, Rebecca Ferguson
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    An immersive science-fiction adventure
+                    with spectacular visuals.
+                    <span class="review-score">Critic score: 92/100</span>
+                </div>
+            </div>
+        </div>
+        <div class="movie-card" id="animation">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/kCGlIMHnOm8JPXq3rXM6c5wMxcT.jpg"
+                     alt="Inside Out 2 movie poster">
+                <span class="genre-tag">Animation</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>Inside Out 2</h3>
+                <p class="release">Release: 2024</p>
+                <p class="rating">★★★★☆ <span>7.5/10</span></p>
+                <p class="synopsis">
+                    Riley enters her teenage years as new
+                    emotions arrive and change her inner world.
+                </p>
+                <p class="cast">
+                    <strong>Voices:</strong> Amy Poehler,
+                    Maya Hawke, Kensington Tallman
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    A colourful and thoughtful story about
+                    growing up and understanding emotions.
+                    <span class="review-score">Critic score: 91/100</span>
+                </div>
+            </div>
+        </div>
+        <div class="movie-card" id="adventure">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/qhb1qOilapbapxWQn9jtRCMwXJF.jpg"
+                     alt="Wonka movie poster">
+                <span class="genre-tag">Adventure</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>Wonka</h3>
+                <p class="release">Release: 2023</p>
+                <p class="rating">★★★★☆ <span>7.0/10</span></p>
+                <p class="synopsis">
+                    A young chocolatier dreams of opening
+                    a magical chocolate shop against the odds.
+                </p>
+                <p class="cast">
+                    <strong>Cast:</strong> Timothée Chalamet,
+                    Calah Lane, Hugh Grant
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    A charming musical adventure filled
+                    with imagination and delightful moments.
+                    <span class="review-score">Critic score: 82/100</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 5 -->
+        <div class="movie-card" id="drama">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg"
+                     alt="The Shawshank Redemption poster">
+                <span class="genre-tag">Drama</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>The Shawshank Redemption</h3>
+                <p class="release">Release: 1994</p>
+                <p class="rating">★★★★★ <span>9.3/10</span></p>
+                <p class="synopsis">
+                    Two prisoners form a lasting friendship
+                    while holding on to hope inside prison.
+                </p>
+                <p class="cast">
+                    <strong>Cast:</strong> Tim Robbins,
+                    Morgan Freeman, Bob Gunton
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    An enduring drama about friendship,
+                    perseverance and hope.
+                    <span class="review-score">Critic score: 89/100</span>
+                </div>
+            </div>
+        </div>
+        <div class="movie-card" id="thriller">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg"
+                     alt="Joker movie poster">
+                <span class="genre-tag">Thriller</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>Joker</h3>
+                <p class="release">Release: 2019</p>
+                <p class="rating">★★★★☆ <span>8.3/10</span></p>
+                <p class="synopsis">
+                    A troubled aspiring comedian faces
+                    isolation in Gotham City.
+                </p>
+                <p class="cast">
+                    <strong>Cast:</strong> Joaquin Phoenix,
+                    Robert De Niro, Zazie Beetz
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    A dark character study led by a
+                    memorable central performance.
+                    <span class="review-score">Critic score: 69/100</span>
+                </div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg"
+                     alt="Avengers Infinity War poster">
+                <span class="genre-tag">Action</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>Avengers: Infinity War</h3>
+                <p class="release">Release: 2018</p>
+                <p class="rating">★★★★☆ <span>8.4/10</span></p>
+                <p class="synopsis">
+                    Earth's heroes unite to stop Thanos
+                    from collecting the Infinity Stones.
+                </p>
+                <p class="cast">
+                    <strong>Cast:</strong> Robert Downey Jr.,
+                    Chris Evans, Josh Brolin
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    A large-scale superhero adventure with
+                    exciting action and emotional stakes.
+                    <span class="review-score">Critic score: 85/100</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie 8 -->
+        <div class="movie-card">
+            <div class="poster">
+                <img src="https://image.tmdb.org/t/p/w500/1XDDXPXGiI8id7MrUxK36ke7gkX.jpg"
+                     alt="Kung Fu Panda 4 poster">
+                <span class="genre-tag">Animation</span>
+            </div>
+
+            <div class="movie-info">
+                <h3>Kung Fu Panda 4</h3>
+                <p class="release">Release: 2024</p>
+                <p class="rating">★★★☆☆ <span>6.3/10</span></p>
+                <p class="synopsis">
+                    Po searches for a new Dragon Warrior
+                    while confronting a powerful new enemy.
+                </p>
+                <p class="cast">
+                    <strong>Voices:</strong> Jack Black,
+                    Awkwafina, Viola Davis
+                </p>
+                <div class="review">
+                    <strong>Critic Review</strong>
+                    An entertaining family adventure with
+                    humour and colourful action.
+                    <span class="review-score">Critic score: 71/100</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="featured" id="reviews">
+    <div class="featured-box">
+        <h2>🎥 Why CineScope?</h2>
+        <p>
+            CineScope helps movie lovers explore films across
+            different genres, read short reviews, discover cast
+            members and compare rating displays in one place.
+            Find your next favourite movie and enjoy cinema!
+        </p>
+        <br>
+        <a href="#movies" class="btn">Explore Movie Reviews</a>
+    </div>
+</section>
+<footer id="about">
+    <h2>🎬 CineScope</h2>
+    <p>Your destination for movie discoveries and reviews.</p>
+
+    <p>
+        <a href="#home">Home</a>
+        <a href="#movies">Movies</a>
+        <a href="#genres">Genres</a>
+        <a href="#reviews">Reviews</a>
+    </p>
+
+    <p>© 2026 CineScope | Student Web Development Project</p>
+</footer>
+
+</body>
+</html>
