@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CineScope - Movie Reviews</title>
-
 <style>
 * {
     margin: 0;
@@ -12,7 +11,6 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
-
 body {
     font-family: Arial, sans-serif;
     background: #10131b;
@@ -28,29 +26,24 @@ header {
     gap: 15px;
     border-bottom: 2px solid #f5b51b;
 }
-
 .logo {
     font-size: 27px;
     color: #f5b51b;
     font-weight: bold;
 }
-
 nav {
     display: flex;
     flex-wrap: wrap;
     gap: 18px;
 }
-
 nav a {
     text-decoration: none;
     color: white;
     font-weight: bold;
 }
-
 nav a:hover {
     color: #f5b51b;
 }
-
 .search {
     padding: 10px 14px;
     border-radius: 20px;
@@ -70,26 +63,21 @@ nav a:hover {
     background-size: cover;
     background-position: center;
 }
-
 .hero-content {
     max-width: 600px;
 }
-
 .hero h1 {
     font-size: 48px;
     margin-bottom: 15px;
 }
-
 .hero h1 span {
     color: #f5b51b;
 }
-
 .hero p {
     line-height: 1.8;
     color: #e0e0e0;
     margin-bottom: 25px;
 }
-
 .btn {
     display: inline-block;
     background: #f5b51b;
@@ -99,30 +87,25 @@ nav a:hover {
     border-radius: 6px;
     font-weight: bold;
 }
-
 .btn:hover {
     background: white;
 }
 section {
     padding: 40px 6%;
 }
-
 .section-title {
     font-size: 28px;
     margin-bottom: 8px;
 }
-
 .subtitle {
     color: #a9afbd;
     margin-bottom: 25px;
 }
-
 .genres {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
 }
-
 .genres a {
     text-decoration: none;
     color: white;
@@ -131,19 +114,16 @@ section {
     padding: 10px 18px;
     border-radius: 22px;
 }
-
-.genres a:hover {
+    .genres a:hover {
     background: #f5b51b;
     color: #10131b;
 }
-
 /* Movie Grid */
 .movies {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 22px;
 }
-
 .movie-card {
     background: #1b202d;
     border-radius: 12px;
@@ -151,23 +131,19 @@ section {
     border: 1px solid #2d3343;
     transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .movie-card:hover {
     transform: translateY(-7px);
     box-shadow: 0 8px 25px #0008;
 }
-
 .poster {
     position: relative;
 }
-
 .poster img {
     width: 100%;
     height: 290px;
     object-fit: cover;
     display: block;
 }
-
 .genre-tag {
     position: absolute;
     top: 12px;
@@ -179,7 +155,6 @@ section {
     border-radius: 4px;
     font-weight: bold;
 }
-
 .movie-info {
     padding: 16px;
 }
@@ -188,38 +163,32 @@ section {
     font-size: 20px;
     margin-bottom: 9px;
 }
-
 .release {
     color: #a9afbd;
     font-size: 13px;
     margin-bottom: 10px;
 }
-
 .rating {
     color: #f5b51b;
     font-size: 16px;
     margin-bottom: 10px;
 }
-
 .rating span {
     color: white;
     font-weight: bold;
 }
-
 .synopsis {
     font-size: 13px;
     color: #c3c7d1;
     line-height: 1.6;
     margin-bottom: 12px;
 }
-
 .cast {
     color: #a9afbd;
     font-size: 12px;
     line-height: 1.6;
     margin-bottom: 12px;
 }
-
 .review {
     background: #252a38;
     padding: 12px;
@@ -229,11 +198,9 @@ section {
     color: #e0e3e9;
     line-height: 1.6;
 }
-
 .review strong {
     color: #f5b51b;
 }
-
 .review-score {
     display: block;
     color: #f5b51b;
@@ -245,19 +212,16 @@ section {
     border-top: 1px solid #343b4e;
     border-bottom: 1px solid #343b4e;
 }
-
 .featured-box {
     max-width: 900px;
     margin: auto;
     text-align: center;
     padding: 25px;
 }
-
 .featured-box h2 {
     color: #f5b51b;
     margin-bottom: 15px;
 }
-
 .featured-box p {
     line-height: 1.9;
     color: #d4d7df;
@@ -268,33 +232,27 @@ footer {
     text-align: center;
     color: #a9afbd;
 }
-
 footer h2 {
     color: #f5b51b;
     margin-bottom: 10px;
 }
-
 footer a {
     display: inline-block;
     color: white;
     text-decoration: none;
     margin: 12px 8px;
 }
-
 footer a:hover {
     color: #f5b51b;
 }
-
  .hero h1 {
         font-size: 32px;
     }
 </style>
 </head>
-
 <body>
 <header>
     <div class="logo">🎬 CineScope</div>
-
     <nav>
         <a href="#home">Home</a>
         <a href="#movies">Movies</a>
@@ -302,7 +260,6 @@ footer a:hover {
         <a href="#reviews">Reviews</a>
         <a href="#about">About</a>
     </nav>
-
     <input class="search" type="search"
            placeholder="Search movies...">
 </header>
@@ -335,7 +292,6 @@ footer a:hover {
     <p class="subtitle">
         Movie details, ratings, cast information and critic reviews.
     </p>
-
     <div class="movies">
         <div class="movie-card" id="action">
             <div class="poster">
@@ -343,7 +299,6 @@ footer a:hover {
                      alt="Oppenheimer movie poster">
                 <span class="genre-tag">Drama</span>
             </div>
-
             <div class="movie-info">
                 <h3>Oppenheimer</h3>
                 <p class="release">Release: 2023</p>
@@ -370,8 +325,7 @@ footer a:hover {
                 <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"
                      alt="Dune Part Two movie poster">
                 <span class="genre-tag">Sci-Fi</span>
-            </div>
-
+            </div>dg
             <div class="movie-info">
                 <h3>Dune: Part Two</h3>
                 <p class="release">Release: 2024</p>
@@ -398,7 +352,6 @@ footer a:hover {
                      alt="Inside Out 2 movie poster">
                 <span class="genre-tag">Animation</span>
             </div>
-
             <div class="movie-info">
                 <h3>Inside Out 2</h3>
                 <p class="release">Release: 2024</p>
@@ -425,7 +378,6 @@ footer a:hover {
                      alt="Wonka movie poster">
                 <span class="genre-tag">Adventure</span>
             </div>
-
             <div class="movie-info">
                 <h3>Wonka</h3>
                 <p class="release">Release: 2023</p>
@@ -446,7 +398,6 @@ footer a:hover {
                 </div>
             </div>
         </div>
-
         <!-- Movie 5 -->
         <div class="movie-card" id="drama">
             <div class="poster">
@@ -454,7 +405,6 @@ footer a:hover {
                      alt="The Shawshank Redemption poster">
                 <span class="genre-tag">Drama</span>
             </div>
-
             <div class="movie-info">
                 <h3>The Shawshank Redemption</h3>
                 <p class="release">Release: 1994</p>
